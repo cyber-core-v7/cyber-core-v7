@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBER-CORE v7.0</title>
+    <style>
+        /* ============================================================
+           CSS — Glassmorphism Dark Theme | NO LOGO, NO BRANDING
+           ============================================================ */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary: #0B1121;
+            --bg-secondary: #1E293B;
+            --bg-card: rgba(30, 41, 59, 0.65);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --text-primary: #F1F5F9;
+            --text-secondary: #94A3B8;
+            --text-muted: #64748B;
+            --accent: #06B6D4;
+            --accent-glow: rgba(6, 182, 212, 0.25);
+            --success: #10B981;
+            --success-glow: rgba(16, 185, 129, 0.25);
+            --danger: #EF4444;
+            --danger-glow: rgba(239, 68, 68, 0.25);
+            --warning: #F59E0B;
+            --info: #3B82F6;
+            --premium: #8B5CF6;
+            --border: rgba(51, 65, 85, 0.4);
+            --border-hover: rgba(6, 182, 212, 0.3);
+            --shadow: 0 8px 32px rgba(0,0,0,0.4);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html, body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* ========== GLASS CARD ========== */
+        .glass {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .glass:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 8px 32px rgba(6, 182, 212, 0.08);
+        }
+        .glass-sm {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        /* ========== GRADIENT TEXT ========== */
+        .gradient-text {
+            background: linear-gradient(135deg, #06B6D4, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ========== BUTTONS ========== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #06B6D4, #3B82F6);
+            color: white;
+            box-shadow: 0 4px 16px rgba(6, 182, 212, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(6, 182, 212, 0.45);
+        }
+        .btn-success {
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: white;
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+        }
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(16, 185, 129, 0.45);
+        }
+        .btn-danger {
+            background: linear-gradient(135deg, #EF4444, #DC2626);
+            color: white;
+            box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+        }
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(239, 68, 68, 0.45);
+        }
+        .btn-warning {
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            color: white;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(6, 182, 212, 0.08);
+        }
+        .btn-sm { padding: 6px 14px; font-size: 12px; }
+        .btn-lg { padding: 14px 32px; font-size: 16px; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+
+        /* ========== INPUTS ========== */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .input-group label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        .input-field {
+            padding: 10px 14px;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: var(--transition);
+            outline: none;
+            width: 100%;
+        }
+        .input-field:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+        }
+        .input-field::placeholder { color: var(--text-muted); }
+        textarea.input-field { resize: vertical; min-height: 100px; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+        select.input-field { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394A3B8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+
+        /* ========== BADGES ========== */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .badge-success { background: rgba(16,185,129,0.15); color: #10B981; border: 1px solid rgba(16,185,129,0.3); }
+        .badge-danger { background: rgba(239,68,68,0.15); color: #EF4444; border: 1px solid rgba(239,68,68,0.3); }
+        .badge-warning { background: rgba(245,158,11,0.15); color: #F59E0B; border: 1px solid rgba(245,158,11,0.3); }
+        .badge-info { background: rgba(59,130,246,0.15); color: #3B82F6; border: 1px solid rgba(59,130,246,0.3); }
+        .badge-premium { background: rgba(139,92,246,0.15); color: #8B5CF6; border: 1px solid rgba(139,92,246,0.3); }
+
+        /* ========== LAYOUT ========== */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            min-width: 240px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 20px 12px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+        .sidebar-logo {
+            font-size: 18px;
+            font-weight: 800;
+            padding: 8px 12px;
+            margin-bottom: 24px;
+        }
+        .sidebar-user {
+            padding: 10px 12px;
+            margin-bottom: 16px;
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+        }
+        .sidebar-user .name { font-weight: 600; font-size: 14px; }
+        .sidebar-user .role { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-item:hover {
+            background: rgba(6, 182, 212, 0.08);
+            color: var(--accent);
+        }
+        .nav-item.active {
+            background: rgba(6, 182, 212, 0.12);
+            color: var(--accent);
+            border-left: 3px solid var(--accent);
+        }
+        .nav-item .icon { font-size: 18px; width: 24px; text-align: center; }
+        .nav-divider { height: 1px; background: var(--border); margin: 12px 12px; }
+        .nav-section { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); padding: 8px 12px 4px; font-weight: 600; }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 24px 32px;
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+        .page { display: none; animation: fadeIn 0.3s ease; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        /* ========== STAT CARDS ========== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .stat-card {
+            padding: 20px;
+            border-radius: var(--radius);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .stat-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+        .stat-card .label { font-size: 12px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .stat-card .value { font-size: 28px; font-weight: 700; }
+        .stat-card .sub { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+
+        /* ========== COUNTDOWN ========== */
+        .countdown {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .countdown.green { color: #10B981; }
+        .countdown.orange { color: #F59E0B; }
+        .countdown.red { color: #EF4444; }
+
+        /* ========== PROGRESS BAR ========== */
+        .progress-bar {
+            height: 8px;
+            background: rgba(51, 65, 85, 0.5);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.8s ease;
+            background: linear-gradient(90deg, #06B6D4, #8B5CF6);
+        }
+        .progress-fill.green { background: linear-gradient(90deg, #10B981, #34D399); }
+        .progress-fill.orange { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
+        .progress-fill.red { background: linear-gradient(90deg, #EF4444, #F87171); }
+
+        /* ========== TABLE ========== */
+        .table-container {
+            overflow-x: auto;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th {
+            background: rgba(15, 23, 42, 0.8);
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+        td {
+            padding: 10px 16px;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.3);
+            color: var(--text-primary);
+        }
+        tr:hover td { background: rgba(6, 182, 212, 0.04); }
+        tr:last-child td { border-bottom: none; }
+
+        /* ========== TABS ========== */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 20px;
+            background: var(--bg-card);
+            padding: 4px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+        }
+        .tab-item {
+            padding: 8px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            border: none;
+            background: none;
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-item:hover { color: var(--text-primary); }
+        .tab-item.active {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 2px 8px rgba(6, 182, 212, 0.3);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.2s ease; }
+
+        /* ========== MODAL ========== */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .modal {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            max-width: 520px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.open .modal { transform: scale(1); }
+        .modal-title { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+        .modal-close {
+            position: absolute;
+            top: 12px; right: 16px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        /* ========== TOAST ========== */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .toast {
+            padding: 12px 20px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            font-size: 13px;
+            font-weight: 500;
+            animation: slideIn 0.3s ease;
+            min-width: 280px;
+        }
+        .toast.success { border-color: #10B981; }
+        .toast.error { border-color: #EF4444; }
+        .toast.info { border-color: #3B82F6; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(100%); } to { opacity: 1; transform: translateX(0); } }
+
+        /* ========== API SLOT GRID ========== */
+        .slot-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+        .slot-card {
+            padding: 16px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .slot-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+        .slot-card .slot-num { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+        .slot-card .slot-status { font-size: 24px; margin: 8px 0; }
+        .slot-card .slot-name { font-size: 12px; font-weight: 600; }
+        .slot-card .slot-usage { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+        .slot-card.healthy { border-color: rgba(16,185,129,0.3); }
+        .slot-card.degraded { border-color: rgba(245,158,11,0.3); }
+        .slot-card.down { border-color: rgba(239,68,68,0.3); }
+        .slot-card.empty { opacity: 0.4; }
+
+        /* ========== CHAT ========== */
+        .chat-container {
+            height: 500px;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .chat-msg {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            line-height: 1.6;
+            animation: fadeIn 0.2s ease;
+        }
+        .chat-msg.user {
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        .chat-msg.ai {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        .chat-msg .time { font-size: 10px; color: var(--text-muted); margin-top: 4px; text-align: right; }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .sidebar { width: 60px; min-width: 60px; padding: 12px 6px; }
+            .sidebar .nav-item span:not(.icon) { display: none; }
+            .sidebar .sidebar-logo span:last-child { display: none; }
+            .sidebar-user .role, .sidebar-user .name { display: none; }
+            .main-content { padding: 16px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .slot-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* ========== LOADING SPINNER ========== */
+        .spinner {
+            width: 20px; height: 20px;
+            border: 2px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            display: inline-block;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 16px;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        .loading-overlay.hidden { opacity: 0; pointer-events: none; }
+        .loading-spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+        .loading-text { font-size: 14px; color: var(--text-secondary); }
+
+        /* Status colors */
+        .status-excellent { color: #059669; }
+        .status-good { color: #10B981; }
+        .status-moderate { color: #F59E0B; }
+        .status-risk { color: #F97316; }
+        .status-dead { color: #EF4444; }
+
+        /* Misc */
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-8 { gap: 8px; }
+        .gap-12 { gap: 12px; }
+        .gap-16 { gap: 16px; }
+        .gap-24 { gap: 24px; }
+        .mt-8 { margin-top: 8px; }
+        .mt-16 { margin-top: 16px; }
+        .mt-24 { margin-top: 24px; }
+        .mb-16 { margin-bottom: 16px; }
+        .mb-24 { margin-bottom: 24px; }
+        .p-16 { padding: 16px; }
+        .p-24 { padding: 24px; }
+        .w-full { width: 100%; }
+        .hidden { display: none !important; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        @media (max-width: 768px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-overlay" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <div class="loading-text gradient-text" style="font-size:20px;font-weight:700;">CYBER-CORE v7.0</div>
+        <div class="loading-text" id="loadingStatus">Initializing system...</div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Login Page -->
+    <div id="loginPage" style="display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;">
+        <div class="glass" style="max-width:420px;width:100%;padding:40px 32px;">
+            <div style="text-align:center;margin-bottom:32px;">
+                <div style="font-size:48px;margin-bottom:12px;">🚀</div>
+                <h1 class="gradient-text" style="font-size:24px;font-weight:800;">CYBER-CORE v7.0</h1>
+                <p style="color:var(--text-secondary);font-size:13px;margin-top:4px;">Enterprise Lead Validation & AI CRM</p>
+            </div>
+            <form id="loginForm" onsubmit="return handleLogin(event)">
+                <div class="input-group mb-16">
+                    <label>Username</label>
+                    <input type="text" class="input-field" id="loginUsername" placeholder="Enter username" required value="admin">
+                </div>
+                <div class="input-group mb-24">
+                    <label>Password</label>
+                    <input type="password" class="input-field" id="loginPassword" placeholder="Enter password" required value="admin123">
+                </div>
+                <button type="submit" class="btn btn-primary w-full btn-lg" id="loginBtn">
+                    <span>🔓</span> Sign In
+                </button>
+                <p id="loginError" style="color:var(--danger);font-size:13px;margin-top:12px;text-align:center;display:none;"></p>
+            </form>
+            <div style="text-align:center;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);">
+                <p style="font-size:12px;color:var(--text-muted);">Default: admin/admin123 • user1/user1234</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="appContainer" style="display:none;">
+        <div class="app-container">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-logo">
+                    <span>🚀</span>
+                    <span class="gradient-text"> CYBER-CORE</span>
+                </div>
+                <div class="sidebar-user" id="sidebarUser">
+                    <div class="name" id="sidebarName">admin</div>
+                    <div class="role" id="sidebarRole">ADMIN</div>
+                </div>
+
+                <div class="nav-section">Main</div>
+                <button class="nav-item active" onclick="navigate('dashboard')">
+                    <span class="icon">📊</span><span>Dashboard</span>
+                </button>
+                <button class="nav-item" onclick="navigate('validation')">
+                    <span class="icon">✅</span><span>Validation</span>
+                </button>
+                <button class="nav-item" onclick="navigate('export')">
+                    <span class="icon">📤</span><span>Export</span>
+                </button>
+                <button class="nav-item" onclick="navigate('reports')">
+                    <span class="icon">📋</span><span>Reports</span>
+                </button>
+                <button class="nav-item" onclick="navigate('ai-chat')">
+                    <span class="icon">🤖</span><span>AI Chat</span>
+                </button>
+                <button class="nav-item" onclick="navigate('settings')">
+                    <span class="icon">⚙️</span><span>Settings</span>
+                </button>
+
+                <div class="nav-divider"></div>
+                <div class="nav-section" id="adminSectionLabel">Admin</div>
+                <button class="nav-item" id="adminDashBtn" onclick="navigate('admin-dashboard')" style="display:none;">
+                    <span class="icon">🔐</span><span>Admin Panel</span>
+                </button>
+
+                <div class="nav-divider"></div>
+                <button class="nav-item" onclick="handleLogout()" style="color:var(--danger);">
+                    <span class="icon">🚪</span><span>Logout</span>
+                </button>
+
+                <div style="margin-top:auto;text-align:center;padding:12px;font-size:10px;color:var(--text-muted);">
+                    v7.0 • Enterprise
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- ==================== DASHBOARD ==================== -->
+                <div class="page active" id="page-dashboard">
+                    <h1 class="page-title gradient-text">📊 Dashboard</h1>
+                    <p class="page-subtitle" id="dashWelcome">Welcome back!</p>
+                    
+                    <div class="stats-grid" id="dashLimits">
+                        <div class="stat-card">
+                            <div class="label">⏱️ Time Remaining</div>
+                            <div class="countdown green" id="dashTime">--</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="label">📊 Data Usage</div>
+                            <div class="value" id="dashData">0 MB</div>
+                            <div class="progress-bar"><div class="progress-fill" id="dashDataBar" style="width:0%"></div></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="label">📋 Scans Today</div>
+                            <div class="value" id="dashScans">0 / 20</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="label">✅ Total Validated</div>
+                            <div class="value" id="dashTotal">0</div>
+                        </div>
+                    </div>
+
+                    <div class="stats-grid" id="dashStats">
+                        <div class="stat-card">
+                            <div class="label">🟢 Valid</div>
+                            <div class="value status-good" id="dashValid">0%</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="label">🔴 Dead</div>
+                            <div class="value status-dead" id="dashDead">0%</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="label">🟠 High Risk</div>
+                            <div class="value status-risk" id="dashRisk">0%</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="label">💡 Avg Score</div>
+                            <div class="value gradient-text" id="dashScore">0</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom:24px;">
+                        <h3 style="font-size:16px;font-weight:600;margin-bottom:12px;">🚀 Quick Actions</h3>
+                        <div class="flex gap-12" style="flex-wrap:wrap;">
+                            <button class="btn btn-primary" onclick="navigate('validation')">✅ Start Validation</button>
+                            <button class="btn btn-success" onclick="navigate('export')">📤 Export Data</button>
+                            <button class="btn btn-outline" onclick="navigate('ai-chat')">🤖 AI Analysis</button>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size:16px;font-weight:600;margin-bottom:12px;">📜 Recent Activity</h3>
+                    <div class="glass p-16" id="dashRecent">
+                        <p style="color:var(--text-muted);font-size:13px;">No recent scans.</p>
+                    </div>
+                </div>
+
+                <!-- ==================== VALIDATION ==================== -->
+                <div class="page" id="page-validation">
+                    <h1 class="page-title gradient-text">✅ Email Validation</h1>
+                    <p class="page-subtitle">7-Stage Validation Engine • Multi-Threaded • Live Results</p>
+
+                    <div class="tabs" id="valTabs">
+                        <button class="tab-item active" data-tab="file">📁 File Upload</button>
+                        <button class="tab-item" data-tab="paste">📝 Paste Emails</button>
+                        <button class="tab-item" data-tab="saved">💾 Saved Files</button>
+                    </div>
+
+                    <div class="tab-content active" id="val-file">
+                        <div class="glass p-24 text-center" style="border:2px dashed var(--border);cursor:pointer;" onclick="document.getElementById('fileInput').click()" id="dropZone">
+                            <div style="font-size:48px;margin-bottom:12px;">📁</div>
+                            <p style="font-weight:600;">Drop your file here or click to browse</p>
+                            <p style="font-size:12px;color:var(--text-muted);margin-top:4px;">Supports .txt, .csv, .xlsx (max 100MB)</p>
+                            <input type="file" id="fileInput" accept=".txt,.csv,.xlsx" style="display:none;" onchange="handleFileSelect(event)">
+                            <p id="fileName" style="margin-top:8px;font-size:13px;color:var(--accent);display:none;"></p>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="val-paste">
+                        <div class="input-group mb-16">
+                            <label>Paste emails (one per line)</label>
+                            <textarea class="input-field" id="pasteInput" rows="8" placeholder="email1@example.com&#10;email2@example.com&#10;email3@example.com"></textarea>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="val-saved">
+                        <div class="input-group mb-16">
+                            <label>Select saved file</label>
+                            <select class="input-field" id="savedFileSelect">
+                                <option value="">-- No saved files --</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid-2 mt-16" style="margin-bottom:16px;">
+                        <div class="input-group">
+                            <label>Remove Duplicates</label>
+                            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 0;">
+                                <input type="checkbox" id="removeDupes" checked style="width:18px;height:18px;accent-color:var(--accent);">
+                                <span style="font-size:14px;">Enable duplicate removal</span>
+                            </label>
+                        </div>
+                        <div class="input-group">
+                            <label>Thread Count</label>
+                            <div class="flex items-center gap-12">
+                                <input type="range" id="threadCount" min="10" max="200" value="50" step="10" style="flex:1;accent-color:var(--accent);" oninput="document.getElementById('threadVal').textContent=this.value">
+                                <span id="threadVal" style="font-weight:600;min-width:40px;">50</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-12 mb-24">
+                        <button class="btn btn-primary btn-lg" id="startValBtn" onclick="startValidation()">🚀 Start Validation</button>
+                        <button class="btn btn-danger btn-lg" id="stopValBtn" style="display:none;" onclick="stopValidation()">⏹️ Stop</button>
+                    </div>
+
+                    <div id="valProgress" style="display:none;" class="mb-16">
+                        <div class="flex justify-between items-center mb-8">
+                            <span style="font-size:13px;font-weight:500;" id="valProgressText">Processing...</span>
+                            <span style="font-size:13px;" id="valProgressPct">0%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" id="valProgressBar" style="width:0%;transition:width 0.3s;"></div></div>
+                    </div>
+
+                    <div id="valStatus" class="mb-16" style="display:none;"></div>
+
+                    <div id="valResults" style="display:none;">
+                        <div class="flex justify-between items-center mb-12">
+                            <h3 style="font-size:16px;font-weight:600;">Live Results</h3>
+                            <div class="flex gap-8">
+                                <input type="text" class="input-field" id="resultSearch" placeholder="🔍 Search email..." style="width:200px;padding:6px 12px;font-size:12px;" oninput="filterResults()">
+                            </div>
+                        </div>
+                        <div class="stats-grid" id="valSummaryCards" style="margin-bottom:16px;">
+                            <div class="stat-card" style="padding:12px;"><div class="label">Total</div><div class="value" style="font-size:20px;" id="resTotal">0</div></div>
+                            <div class="stat-card" style="padding:12px;"><div class="label">🟢 Valid</div><div class="value status-good" style="font-size:20px;" id="resValid">0</div></div>
+                            <div class="stat-card" style="padding:12px;"><div class="label">🔴 Dead</div><div class="value status-dead" style="font-size:20px;" id="resDead">0</div></div>
+                            <div class="stat-card" style="padding:12px;"><div class="label">🟠 Risk</div><div class="value status-risk" style="font-size:20px;" id="resRisk">0</div></div>
+                            <div class="stat-card" style="padding:12px;"><div class="label">💡 Avg Score</div><div class="value gradient-text" style="font-size:20px;" id="resScore">0</div></div>
+                        </div>
+                        <div class="table-container" style="max-height:400px;overflow-y:auto;">
+                            <table id="resultsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Email</th>
+                                        <th>Status</th>
+                                        <th>Score</th>
+                                        <th>Category</th>
+                                        <th>Country</th>
+                                        <th>Inbox %</th>
+                                        <th>Provider</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="resultsBody"></tbody>
+                            </table>
+                        </div>
+                        <div class="flex gap-12 mt-16">
+                            <button class="btn btn-success btn-sm" onclick="navigate('export')">📤 Export Results</button>
+                            <button class="btn btn-outline btn-sm" onclick="saveCurrentResults()">💾 Save to DB</button>
+                            <button class="btn btn-primary btn-sm" onclick="navigate('ai-chat')">🤖 AI Analyze</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== EXPORT ==================== -->
+                <div class="page" id="page-export">
+                    <h1 class="page-title gradient-text">📤 Export Center</h1>
+                    <p class="page-subtitle">Export your validation results in multiple formats</p>
+
+                    <div class="grid-2">
+                        <div class="glass p-24">
+                            <h3 style="font-size:16px;font-weight:600;margin-bottom:16px;">Export Configuration</h3>
+                            <div class="input-group mb-16">
+                                <label>Format</label>
+                                <div class="flex gap-8" style="flex-wrap:wrap;">
+                                    <label class="btn btn-sm" style="cursor:pointer;background:var(--accent);color:white;border:none;" id="fmtCsv" onclick="selectFormat('csv')">📄 CSV</label>
+                                    <label class="btn btn-sm btn-outline" style="cursor:pointer;" id="fmtTxt" onclick="selectFormat('txt')">📃 TXT</label>
+                                    <label class="btn btn-sm btn-outline" style="cursor:pointer;" id="fmtXlsx" onclick="selectFormat('xlsx')">📗 XLSX</label>
+                                    <label class="btn btn-sm btn-outline" style="cursor:pointer;" id="fmtJson" onclick="selectFormat('json')">📦 JSON</label>
+                                </div>
+                            </div>
+                            <div class="input-group mb-16">
+                                <label>Filter by Status</label>
+                                <select class="input-field" id="exportStatus">
+                                    <option value="All">All Results</option>
+                                    <option value="Valid">Valid Only</option>
+                                    <option value="Valid (Excellent)">Excellent</option>
+                                    <option value="Valid (Good)">Good</option>
+                                    <option value="Valid (Moderate)">Moderate</option>
+                                    <option value="High Risk">High Risk</option>
+                                    <option value="Dead">Dead</option>
+                                </select>
+                            </div>
+                            <div class="input-group mb-16">
+                                <label>Filter by Domain (optional)</label>
+                                <input type="text" class="input-field" id="exportDomain" placeholder="e.g. gmail.com">
+                            </div>
+                            <div class="input-group mb-16">
+                                <label>Filter by Category (optional)</label>
+                                <select class="input-field" id="exportCategory">
+                                    <option value="">All Categories</option>
+                                    <option value="Gmail Blasting">Gmail Blasting</option>
+                                    <option value="Corporate B2B">Corporate B2B</option>
+                                    <option value="B2C General">B2C General</option>
+                                    <option value="High Value Leads">High Value Leads</option>
+                                    <option value="Newsletter Ready">Newsletter Ready</option>
+                                    <option value="Cold Email">Cold Email</option>
+                                    <option value="E-commerce">E-commerce</option>
+                                    <option value="SaaS Prospects">SaaS Prospects</option>
+                                    <option value="Local Business">Local Business</option>
+                                    <option value="Enterprise">Enterprise</option>
+                                </select>
+                            </div>
+                            <div class="input-group mb-16">
+                                <label>Auto-Filename Preview</label>
+                                <input type="text" class="input-field" id="exportFilename" placeholder="#Category_Domain_000k.csv" readonly>
+                                <p style="font-size:11px;color:var(--text-muted);margin-top:4px;">Pattern: #CategoryName_Domain_RecordCount</p>
+                            </div>
+                            <div class="flex gap-12 mb-16" style="flex-wrap:wrap;">
+                                <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;">
+                                    <input type="checkbox" id="saveToDb" style="accent-color:var(--accent);"> Save to Database
+                                </label>
+                                <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;">
+                                    <input type="checkbox" id="deleteAfter" style="accent-color:var(--accent);"> Delete after export
+                                </label>
+                            </div>
+                            <button class="btn btn-primary w-full" onclick="handleExport()">📥 Export Now</button>
+                            <p id="exportStatus" style="margin-top:12px;font-size:13px;display:none;"></p>
+                        </div>
+
+                        <div class="glass p-24">
+                            <h3 style="font-size:16px;font-weight:600;margin-bottom:16px;">Export History</h3>
+                            <div id="exportHistory">
+                                <p style="color:var(--text-muted);font-size:13px;">No exports yet.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== REPORTS ==================== -->
+                <div class="page" id="page-reports">
+                    <h1 class="page-title gradient-text">📋 Reports</h1>
+                    <p class="page-subtitle">View and analyze your scan history</p>
+
+                    <div class="glass p-24 mb-24">
+                        <h3 style="font-size:16px;font-weight:600;margin-bottom:16px;">Scan History</h3>
+                        <div class="table-container" style="max-height:400px;overflow-y:auto;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Date</th>
+                                        <th>Filename</th>
+                                        <th>Total</th>
+                                        <th>Valid</th>
+                                        <th>Dead</th>
+                                        <th>Score</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="reportsBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="glass p-24" id="reportDetail" style="display:none;">
+                        <h3 style="font-size:16px;font-weight:600;margin-bottom:16px;">Report Details</h3>
+                        <div id="reportContent"></div>
+                    </div>
+                </div>
+
+                <!-- ==================== AI CHAT ==================== -->
+                <div class="page" id="page-ai-chat">
+                    <h1 class="page-title gradient-text">🤖 AI Assistant</h1>
+                    <p class="page-subtitle">Get insights, marketing advice, and analysis from your AI</p>
+
+                    <div class="glass" style="display:flex;flex-direction:column;height:600px;">
+                        <div class="chat-container" id="chatMessages" style="flex:1;">
+                            <div class="chat-msg ai">
+                                <strong>🤖 AI Assistant</strong>
+                                <p style="margin-top:4px;">Hello! I'm your AI assistant. I can help you analyze your validation results, provide marketing strategies, and answer questions about email campaigns. What would you like to know?</p>
+                            </div>
+                        </div>
+                        <div style="padding:16px;border-top:1px solid var(--border);display:flex;gap:12px;">
+                            <input type="text" class="input-field" id="chatInput" placeholder="Ask me anything about your data..." style="flex:1;" onkeydown="if(event.key==='Enter')sendChat()">
+                            <button class="btn btn-primary" onclick="sendChat()">Send</button>
+                            <button class="btn btn-outline btn-sm" onclick="clearChat()">🗑️</button>
+                        </div>
+                    </div>
+                    <div class="flex gap-8 mt-16" style="flex-wrap:wrap;">
+                        <button class="btn btn-sm btn-outline" onclick="quickChat('Analyze my last scan')">📊 Analyze my last scan</button>
+                        <button class="btn btn-sm btn-outline" onclick="quickChat('Give marketing advice')">🎯 Marketing advice</button>
+                        <button class="btn btn-sm btn-outline" onclick="quickChat('Suggest best category')">📂 Best category</button>
+                        <button class="btn btn-sm btn-outline" onclick="quickChat('How to improve inbox rate?')">📈 Improve inbox rate</button>
+                    </div>
+                </div>
+
+                <!-- ==================== SETTINGS ==================== -->
+                <div class="page" id="page-settings">
+                    <h1 class="page-title gradient-text">⚙️ Settings</h1>
+                    <p class="page-subtitle">Account information and preferences</p>
+
+                    <div class="grid-2">
+                        <div class="glass p-24">
+                            <h3 style="font-size:16px;font-weight:600;margin-bottom:16px;">👤 Account Info</h3>
+                            <div id="settingsAccount">
+                                <p style="color:var(--text-muted);">Loading...</p>
+                            </div>
+                        </div>
+                        <div class="glass p-24">
+                            <h3 style="font-size:16px;font-weight:600;margin-bottom:16px;">📊 Statistics</h3>
+                            <div id="settingsStats">
+                                <p style="color:var(--text-muted);">Loading...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== ADMIN DASHBOARD ==================== -->
+                <div class="page" id="page-admin-dashboard">
+                    <h1 class="page-title gradient-text">🔐 Admin Panel</h1>
+                    <p class="page-subtitle">System management and configuration</p>
+
+                    <div class="tabs" id="adminTabs">
+                        <button class="tab-item active" data-tab="admin-overview">📊 Overview</button>
+                        <button class="tab-item" data-tab="admin-users">👥 Users</button>
+                        <button class="tab-item" data-tab="admin-api">🔌 API Slots</button>
+                        <button class="tab-item" data-tab="admin-logs">📝 Live Logs</button>
+                        <button class="tab-item" data-tab="admin-analytics">📈 Analytics</button>
+                    </div>
+
+                    <!-- Overview -->
+                    <div class="tab-content active" id="admin-overview">
+                        <div class="stats-grid" id="adminOverviewStats">
+                            <div class="stat-card"><div class="label">👥 Total Users</div><div class="value gradient-text" id="adminTotalUsers">0</div></div>
+                            <div class="stat-card"><div class="label">📋 Total Scans</div><div class="value" id="adminTotalScans">0</div></div>
+                            <div class="stat-card"><div class="label">📧 Emails Processed</div><div class="value" id="adminTotalEmails">0</div></div>
+                            <div class="stat-card"><div class="label">📤 Total Exports</div><div class="value" id="adminTotalExports">0</div></div>
+                        </div>
+                        <div class="flex gap-12">
+                            <button class="btn btn-warning btn-sm" onclick="clearSystemCache()">🧹 Clear Cache</button>
+                            <button class="btn btn-primary btn-sm" onclick="refreshAdminDashboard()">🔄 Refresh</button>
+                        </div>
+                    </div>
+
+                    <!-- Users Management -->
+                    <div class="tab-content" id="admin-users">
+                        <div class="flex justify-between items-center mb-16">
+                            <h3 style="font-size:16px;font-weight:600;">👥 User Management (CRUD)</h3>
+                            <button class="btn btn-success btn-sm" onclick="showCreateUserModal()">➕ Create User</button>
+                        </div>
+                        <div class="table-container" style="max-height:400px;overflow-y:auto;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Username</th>
+                                        <th>Role</th>
+                                        <th>Active</th>
+                                        <th>Data Limit</th>
+                                        <th>Daily Scans</th>
+                                        <th>Expiry</th>
+                                        <th>Last Active</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="adminUsersBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- API Slots Manager -->
+                    <div class="tab-content" id="admin-api">
+                        <div class="flex justify-between items-center mb-16">
+                            <h3 style="font-size:16px;font-weight:600;">🔌 10-Slot Multi-API Manager</h3>
+                            <button class="btn btn-primary btn-sm" onclick="testAllApiSlots()">🧪 Test All Slots</button>
+                        </div>
+                        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">
+                            Configure Gemini, Cloudflare Workers, and Google Drive APIs. 
+                            System auto-rotates between active slots. Add 1 to 10 slots per type — only active ones are used.
+                        </p>
+
+                        <div class="tabs" id="apiTypeTabs" style="margin-bottom:16px;">
+                            <button class="tab-item active" data-tab="api-gemini">🤖 Gemini</button>
+                            <button class="tab-item" data-tab="api-cloudflare">☁️ Cloudflare</button>
+                            <button class="tab-item" data-tab="api-drive">📁 Google Drive</button>
+                        </div>
+
+                        <div class="tab-content active" id="api-gemini">
+                            <div class="flex justify-between items-center mb-12">
+                                <span style="font-size:13px;color:var(--text-secondary);">Configure up to 10 Gemini API keys</span>
+                                <button class="btn btn-sm btn-outline" onclick="testApiType('gemini')">Test All Gemini</button>
+                            </div>
+                            <div class
